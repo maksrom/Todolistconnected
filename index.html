@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TodoLiast connected</title>
+    <link rel="stylesheet" href="css/main.css"/>
+</head>
+
+<body>
+
+<section ng-app="todoApp">
+        <div ng-controller="todoCtrl">
+                <ul>
+                    <li class="selected-{{ todo.done }}" ng-repeat="todo in todos">
+                        <input type="checkbox" ng-model="todo.done" ng-click="updateDone(todo)"/>
+                        <span class="selected-{{ item.done }}">{{ item.text }}</span>
+                        <button ng-click="revision(item)">Select</button>
+                    </li>
+                </ul>
+            <form ng-submit="postTodo()">
+                    <input type="text" ng-model="newTodo"/>
+                    <button ng-click="postTodo()" ng-show="add">Add task</button>
+                    <button ng-click="updateTodo(newTodo)" ng-show="!add">Update</button>
+                    <button ng-click="deleteAllDone()">Delete</button>
+                </form>
+            <div class="alert alert-error" ng-show="showError">Error occured.</div>
+        </div>
+</section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+<script src="js/app/app.js"></script>
+<script src="js/controllers/todoCtrl.js"></script>
+
+</body>
+</html>
